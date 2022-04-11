@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+
+span{
+    font-weight: bold;
+}
+.container{
+    max-width: 100%;
+    margin:0;
+    padding:0;
+    display: flex;
+    justify-content: center;
+}
+button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
