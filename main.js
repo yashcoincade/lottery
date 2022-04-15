@@ -189,5 +189,5 @@ async function login() {
 
 
   document.getElementById("enter").onclick = enterLottery;
-  document.getElementById("donate").onclick = donateFunds;
   document.getElementById("pickWinner").onclick = pickWinner;
+  //   document.getElementById("donate").onclick = donateFunds;
