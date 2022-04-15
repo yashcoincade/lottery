@@ -135,7 +135,7 @@ async function login() {
     }
     const transaction = await Moralis.executeFunction(options);
     console.log(transaction.hash);
-	prompt("Entering the Lottery, Please wait...");
+	alert("Entering the Lottery, Please wait...");
 
     const result = await transaction.wait();
 	console.log(result);
