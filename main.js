@@ -103,6 +103,8 @@ const ABI= [
 		"type": "function"
 	}
 ]
+
+let winner;
 async function login() {
     let user = Moralis.User.current();
     if (!user) {
@@ -168,9 +170,16 @@ async function login() {
         functionName: "pickWinner",
         abi: ABI
 	  }
-	  const pickWinner = await Moralis.executeFunction(options);
-	  console.log(pickWinner);
+	//   const pickWinner = await Moralis.executeFunction(options);
+	//   console.log(pickWinner);
+
+	  const transaction = await Moralis.executeFunction(options);
+	  console.log(transaction.hash);
+	  const result = await transaction.wait();
+	  console.log(result);
+	  
 	  WinnerAddress();
+	  
   }
 
   async function WinnerAddress(){
@@ -180,13 +189,17 @@ async function login() {
         functionName: "getWinner",
         abi: ABI
     }
-    const winner = await Moralis.executeFunction(options);
-    document.getElementById("winnerId").innerHTML = winner.toString();
+    winner = await Moralis.executeFunction(options);
+	console.log(winner);
+	updateWinner();
+  }
+
+  function updateWinner(){
+	document.getElementById("winnerId").innerHTML = winner.toString();
   }
   
 //   document.getElementById("btn-login").onclick = login;
 //   document.getElementById("btn-logout").onclick = logOut;
-
 
   document.getElementById("enter").onclick = enterLottery;
   document.getElementById("pickWinner").onclick = pickWinner;
